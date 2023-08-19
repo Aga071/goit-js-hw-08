@@ -1,8 +1,4 @@
-import lodashThrottle from 'lodash.throttle';
-// Requiring lodash library
-const lodash = require('lodash.throttle');
-
-// Calling throttle() method with its parameter
+import throttle from 'lodash.throttle';
 
 const formFeedback = document.querySelector('.feedback-form');
 const inputEmail = formFeedback.querySelector('input');
@@ -25,12 +21,15 @@ updateOutput();
 
 // throt_fun();
 
-formFeedback.addEventListener('input', e => {
-  newObj.email = inputEmail.value;
-  newObj.message = textareaMessage.value;
+formFeedback.addEventListener(
+  'input',
+  throttle(() => {
+    newObj.email = inputEmail.value;
+    newObj.message = textareaMessage.value;
 
-  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(newObj));
-});
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(newObj));
+  }, 500)
+);
 
 function updateOutput() {
   try {
