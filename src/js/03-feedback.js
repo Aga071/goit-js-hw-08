@@ -10,17 +10,6 @@ const LOCALSTORAGE_KEY = 'feedback-form-state';
 let newObj = {};
 updateOutput();
 
-// var throt_fun = _.throttle(
-//   formFeedback.addEventListener('input', e => {
-//     newObj.email = inputEmail.value;
-//     newObj.message = textareaMessage.value;
-
-//     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(newObj));
-//   })
-// );
-
-// throt_fun();
-
 formFeedback.addEventListener(
   'input',
   throttle(() => {
